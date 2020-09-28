@@ -6,6 +6,7 @@
       // functions that run after page loads
       displayGreeting();
       fetchWeather();
+      displayGreetAndWeather();
     }
     // display good morning, afternoon or evening based on the time
     function displayGreeting() {
@@ -32,6 +33,29 @@
         document.getElementById("weather").innerHTML = "Error in fetchWeather function";
       });
     }
+
+    function displayGreetAndWeather(){
+      var date = new Date();
+      var hour = date.getHours();
+      var description = "";
+      if (hour < 12) {
+        description = "morning";
+      } else if (hour < 17) {
+        description = "afternoon";
+      } else {
+        description = "evening";
+      }
+      fetch("https://api.openweathermap.org/data/2.5/weather?zip=85705,US&appid=a0f349be56797892dd8cab039fe90eff&units=imperial")
+      .then(function(resp) { return resp.json() })
+      .then(function(data) {
+        document.getElementById("greetweather").innerHTML = "Good " + description + " It is currently " + data.main.temp + "&#176; in Tucson Arizona.";
+      })
+      .catch(function() {
+        document.getElementById("greetweather").innerHTML = "Error in fetchWeather function";
+      });
+
+
+    }
   </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About Mike</title>
@@ -40,6 +64,7 @@
   <body>
     <div id="greeting"></div>
   <div id="weather"></div>
+  <div id="greetweather"></div>
 <center>
     <div class="name_container">
         Michael McKisson
