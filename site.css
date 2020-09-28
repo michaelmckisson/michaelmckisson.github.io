@@ -10,7 +10,7 @@ img {
   max-height: 100%;
 }
 .name_container {
-  background-color: red;
+
   width: 344px;
   font-size: 2.5em;
   padding: 20px 20px 20px 20px;
@@ -19,8 +19,7 @@ img {
   max-width: 768px;
 }
 .image_container {
-  background-color: green;
-  height: 344px;
+
   width: 344px;
   float: left;
   border-radius: 50%;
@@ -28,7 +27,7 @@ img {
   margin: 20px 20px 20px 20px;
 }
 .bio_container {
-  background-color: blue;
+
   width: 344px;
   float: left;
   font-size: 1.5em;
@@ -36,7 +35,31 @@ img {
   padding: 20px 20px 20px 20px;
 }
 .news_container {
-  background-color: orange;
+
   width: 344px;
   padding: 20px 20px 20px 20px;
+}
+
+.clear {
+clear: left;
+}
+
+.newssite {
+  background-color: lightgray;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+}
+.newstitle{
+  font-size: 1.4em;
+  font-weight: bold;
+  color: blue;
+}
+
+#greeting {
+  font-size: 1em;
+  margin: 1em;
+}
+#weather {
+  font-size: 1em;
+  margin: 1em;
 }

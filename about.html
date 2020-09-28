@@ -1,17 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+    window.onload = function() {
+      // functions that run after page loads
+      displayGreeting();
+      fetchWeather();
+    }
+    // display good morning, afternoon or evening based on the time
+    function displayGreeting() {
+      var date = new Date();
+      var hour = date.getHours();
+      var description = "";
+      if (hour < 12) {
+        description = "morning";
+      } else if (hour < 17) {
+        description = "afternoon";
+      } else {
+        description = "evening";
+      }
+      document.getElementById("greeting").innerHTML = "Good " + description;
+    }
+    // get weather data from openweathermap and display the current temp
+    function fetchWeather() {
+      fetch("https://api.openweathermap.org/data/2.5/weather?zip=85705,US&appid=a0f349be56797892dd8cab039fe90eff&units=imperial")
+      .then(function(resp) { return resp.json() })
+      .then(function(data) {
+        document.getElementById("weather").innerHTML = "It is currently " + data.main.temp + "&#176; in Tucson Arizona.";
+      })
+      .catch(function() {
+        document.getElementById("weather").innerHTML = "Error in fetchWeather function";
+      });
+    }
+  </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About Mike</title>
     <link rel="stylesheet" href="site.css">
   </head>
   <body>
+    <div id="greeting"></div>
+  <div id="weather"></div>
+<center>
     <div class="name_container">
         Michael McKisson
       </div>
       <div class="content_container">
         <div class="image_container">
-          <img src="media/mike.jpg"
+          <img src="media/mike.jpg">
         </div>
         <div class="bio_container">
         My name is Michael McKisson and I am an instructor at the University of Arizona School of Journalism.
@@ -20,8 +55,15 @@
         </div>
         <div class="clear"></div>
       </div>
+
       <div class="news_container">
-        NEWS SITES HERE
+        <div class="newstitle"> I get my news from:</div>
+        <div class="newssite"><a href="https://www.nytimes.com/" target="_blank"> The New YorK Times </a></div>
+        <div class="newssite"><a href="https://tucson.com/" target="_blank"> Arizona Daily Star</a></div>
+        <div class="newssite"><a href="https://www.theatlantic.com/" target="_blank"> The Atlantic </a></div>
+        <div class="newssite"><a href="https://www.washingtonpost.com/" target="_blank"> The Washington Post</a></div>
+
       </div>
+      </center>
   </body>
 </html>
