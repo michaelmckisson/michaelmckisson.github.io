@@ -45,10 +45,10 @@
       } else {
         description = "evening";
       }
-      fetch("https://api.openweathermap.org/data/2.5/weather?zip=85705,US&appid=a0f349be56797892dd8cab039fe90eff&units=imperial")
+      fetch("https://api.openweathermap.org/data/2.5/weather?zip=85311,US&appid=a0f349be56797892dd8cab039fe90eff&units=imperial")
       .then(function(resp) { return resp.json() })
       .then(function(data) {
-        document.getElementById("greetweather").innerHTML = "Good " + description + " It is currently " + data.main.temp + "&#176; in Tucson Arizona.";
+        document.getElementById("greetweather").innerHTML = "Good " + description + " It is currently " + data.main.temp + " in " + data.name;
       })
       .catch(function() {
         document.getElementById("greetweather").innerHTML = "Error in fetchWeather function";
